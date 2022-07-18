@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  php:
+    container_name: stack-php
+    build:
+      context: ./docker/php
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./php:/var/www/stack
+    user: 1000:1000
