@@ -11,3 +11,17 @@ services:
     volumes:
       - ./php:/var/www/stack
     user: 1000:1000
+  rabbitmq:
+    container_name: stack-rabbitmq
+    ports:
+      - "8904:15672"
+    environment:
+      RABBITMQ_DEFAULT_PASS: bitrix
+      RABBITMQ_DEFAULT_USER: bitrix
+      RABBITMQ_VM_MEMORY_HIGH_WATERMARK: '0.9'
+    image: rabbitmq:3.7-management-alpine
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+    mem_reservation: 128m
